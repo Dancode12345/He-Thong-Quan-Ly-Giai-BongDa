@@ -3,7 +3,7 @@ export default function Footer() {
     <footer className="border-t border-slate-200 bg-navypro text-white">
       <div className="mx-auto grid max-w-7xl gap-6 px-4 py-8 md:grid-cols-[1.4fr_1fr_1fr] lg:px-6">
         <div>
-          <p className="text-lg font-black text-limeflash">BAN TRUYỀN THÔNG - THUEN</p>
+          <p className="text-lg font-black text-limeflash">HỆ THỐNG QUẢN LÝ GIẢI BÓNG ĐÁ TRUYỀN THỐNG TN–HS–SV</p>
           <p className="mt-2 max-w-xl text-sm leading-6 text-slate-300">
             Cổng thông tin vận hành giải đấu bóng đá trẻ trung, minh bạch và luôn cập nhật theo thời gian thực.
           </p>

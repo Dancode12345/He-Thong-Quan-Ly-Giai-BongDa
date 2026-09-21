@@ -1,8 +1,8 @@
 export const initialTournamentData = {
   tournament: {
-    name: "Báo Lá Cải - Thuen 2026",
-    organizer: "Ban tổ chức Báo Lá Cải - Thuen",
-    venue: "Sân bóng Báo Lá Cải - Thuen",
+    name: "Giải bóng đá truyền thống TN–HS–SV 2026",
+    organizer: "Ban tổ chức Giải bóng đá truyền thống TN–HS–SV",
+    venue: "Sân bóng TN–HS–SV",
     season: "Hè 2026"
   },
   teams: [
@@ -146,7 +146,7 @@ export const initialTournamentData = {
     {
       id: "n1",
       title: "HÀNH TRÌNH 20 NĂM – MỘT CHẶNG ĐƯỜNG ĐÁNG TỰ HÀO!",
-      content: "20 năm không chỉ là một con số. Đó là quãng thời gian đủ để một đứa trẻ sinh ra, lớn lên và hôm nay trở thành một phần của chính Chi Hội Thanh niên – Học sinh – Sinh Viên Palei Thuen.\n\nSuốt hành trình ấy, biết bao thế hệ anh chị đi trước đã âm thầm vun đắp, tạo nên một sân chơi lành mạnh, gắn kết và đầy ý nghĩa cho thanh thiếu niên Palei Thuen. Xin gửi lời tri ân sâu sắc đến tất cả những người đã góp sức xây dựng nên hành trình đẹp đẽ này.\n\n**Mùa hè 2026 đánh dấu cột mốc đặc biệt – Kỷ niệm 20 năm thành lập Chi Hội.**\n\nNhân dịp này, Chi Hội sẽ tổ chức chuỗi hoạt động đặc biệt gồm *Trại hè truyền thống* và *Đêm Văn nghệ Kỷ niệm 20 năm* với nhiều chương trình ý nghĩa và đáng nhớ.\n\nNhững ngày qua, Ban Tổ chức rất vui khi thấy các khóa đã chủ động kết nối, chuẩn bị và háo hức hướng về mùa hè năm nay qua những Facebook page. Đó chính là nguồn động viên lớn để chúng tôi tiếp tục cố gắng mang đến một chương trình thật trọn vẹn.\n\nThân mời tất cả anh chị em các khóa, từ khóa 98 đến các Khoá hiện tại, cùng trở về Palei để gặp gỡ, sẻ chia và viết tiếp câu chuyện đẹp của hoạt động Hè truyền thống.\n\n🔹 **20 năm Kết nối – Trưởng thành – Cống hiến – Lan tỏa.**\n📍 *Hẹn gặp nhau tại Hè Báo Lá Cải - Thuen 2026!*",
+      content: "20 năm không chỉ là một con số. Đó là quãng thời gian đủ để một đứa trẻ sinh ra, lớn lên và hôm nay trở thành một phần của chính Chi Hội Thanh niên – Học sinh – Sinh Viên Palei Thuen.\n\nSuốt hành trình ấy, biết bao thế hệ anh chị đi trước đã âm thầm vun đắp, tạo nên một sân chơi lành mạnh, gắn kết và đầy ý nghĩa cho thanh thiếu niên Palei Thuen. Xin gửi lời tri ân sâu sắc đến tất cả những người đã góp sức xây dựng nên hành trình đẹp đẽ này.\n\n**Mùa hè 2026 đánh dấu cột mốc đặc biệt – Kỷ niệm 20 năm thành lập Chi Hội.**\n\nNhân dịp này, Chi Hội sẽ tổ chức chuỗi hoạt động đặc biệt gồm *Trại hè truyền thống* và *Đêm Văn nghệ Kỷ niệm 20 năm* với nhiều chương trình ý nghĩa và đáng nhớ.\n\nNhững ngày qua, Ban Tổ chức rất vui khi thấy các khóa đã chủ động kết nối, chuẩn bị và háo hức hướng về mùa hè năm nay qua những Facebook page. Đó chính là nguồn động viên lớn để chúng tôi tiếp tục cố gắng mang đến một chương trình thật trọn vẹn.\n\nThân mời tất cả anh chị em các khóa, từ khóa 98 đến các Khoá hiện tại, cùng trở về Palei để gặp gỡ, sẻ chia và viết tiếp câu chuyện đẹp của hoạt động Hè truyền thống.\n\n🔹 **20 năm Kết nối – Trưởng thành – Cống hiến – Lan tỏa.**\n📍 *Hẹn gặp nhau tại Hè TN–HS–SV 2026!*",
       imageUrl: "/gallery/20nam.jpg",
       category: "Sự kiện",
       createdAt: "2026-06-01"
@@ -163,7 +163,7 @@ export const initialTournamentData = {
     {
       id: "n3",
       title: "Văn nghệ Hè 2013!\nMới đó đã 13 Năm.. Dàn Mỹ Nhân Khoá 9.",
-      content: "...13 năm trước, những gương mặt trẻ trung, tài năng của Khóa 9 đã tỏa sáng rực rỡ trên sân khấu văn nghệ Hè Báo Lá Cải - Thuen 2013. Những tiết mục đặc sắc, những màn trình diễn đầy cảm xúc đã để lại dấu ấn khó phai trong lòng khán giả và trở thành một phần ký ức đẹp của mùa hè năm đó. Hôm nay, khi nhìn lại, chúng ta không chỉ nhớ về những khoảnh khắc ấy mà còn cảm nhận được sự gắn kết, tình bạn và niềm đam mê cháy bỏng đã tạo nên một mùa hè đáng nhớ cho tất cả mọi người.",
+      content: "...13 năm trước, những gương mặt trẻ trung, tài năng của Khóa 9 đã tỏa sáng rực rỡ trên sân khấu văn nghệ Hè TN–HS–SV 2013. Những tiết mục đặc sắc, những màn trình diễn đầy cảm xúc đã để lại dấu ấn khó phai trong lòng khán giả và trở thành một phần ký ức đẹp của mùa hè năm đó. Hôm nay, khi nhìn lại, chúng ta không chỉ nhớ về những khoảnh khắc ấy mà còn cảm nhận được sự gắn kết, tình bạn và niềm đam mê cháy bỏng đã tạo nên một mùa hè đáng nhớ cho tất cả mọi người.",
       imageUrl: "/gallery/vannghe2013.png",
       videoUrl: "/gallery/vannghe2013.mp4",
       category: "Sự kiện",

@@ -21,13 +21,13 @@ export default function Navbar({ route }) {
         <a href="#/" className="flex items-center gap-3">
           <img
             src="logodoi/BTT.jpg"
-            alt="BAN TRUYỀN THÔNG - THUEN"
+            alt="HỆ THỐNG QUẢN LÝ GIẢI BÓNG ĐÁ TRUYỀN THỐNG TN–HS–SV"
             className="h-11 w-11 object-contain rounded"
           />
 
           <span>
-            <span className="block text-sm font-black uppercase tracking-wide text-navypro">BAN TRUYỀN THÔNG - THUEN</span>
-            <span className="block text-xs font-semibold text-slate-500">Hoạt động hè năm 2026</span>
+            <span className="block text-sm font-black uppercase tracking-wide text-navypro">HỆ THỐNG QUẢN LÝ GIẢI BÓNG ĐÁ TRUYỀN THỐNG TN–HS–SV</span>
+            <span className="block text-xs font-semibold text-slate-500">Mùa giải năm 2026</span>
           </span>
         </a>
 

@@ -1,6 +1,6 @@
-# ⚽ Portal Giải Bóng Đá Báo Lá Cải - Thuen 2026
+# ⚽ Hệ thống quản lý Giải bóng đá truyền thống TN–HS–SV 2026
 
-> Cổng thông tin trực tuyến chính thức phục vụ giải bóng đá truyền thống Báo Lá Cải - Thuen năm 2026. Hệ thống hỗ trợ người xem theo dõi lịch thi đấu, kết quả, bảng xếp hạng realtime.
+> Hệ thống trực tuyến chính thức phục vụ Giải bóng đá truyền thống TN–HS–SV năm 2026. Hệ thống hỗ trợ người xem theo dõi lịch thi đấu, kết quả, bảng xếp hạng realtime.
 
 ---
 
