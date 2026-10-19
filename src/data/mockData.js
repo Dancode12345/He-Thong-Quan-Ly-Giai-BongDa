@@ -1,8 +1,8 @@
 export const initialTournamentData = {
   tournament: {
-    name: "Giải bóng đá truyền thống TN–HS–SV 2026",
-    organizer: "Ban tổ chức Giải bóng đá truyền thống TN–HS–SV",
-    venue: "Sân bóng TN–HS–SV",
+    name: "Hệ Thống Quản Lý Giải Bóng Đá Tỉnh Khánh Hoà",
+    organizer: "Ban tổ chức Giải Bóng Đá Tỉnh Khánh Hoà",
+    venue: "Sân bóng tỉnh Khánh Hoà",
     season: "Hè 2026"
   },
   teams: [

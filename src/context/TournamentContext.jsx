@@ -2,7 +2,7 @@ import { createContext, useContext, useEffect, useMemo, useState } from "react";
 import { initialTournamentData } from "../data/mockData";
 import { calculateStandings, getNextMatch } from "../utils/standings";
 
-const STORAGE_KEY = "tnhssv-football-portal";
+const STORAGE_KEY = "khanh-hoa-football-portal";
 const TournamentContext = createContext(null);
 
 const readStoredData = () => {

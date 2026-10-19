@@ -1,6 +1,6 @@
-# ⚽ Hệ thống quản lý Giải bóng đá truyền thống TN–HS–SV 2026
+# ⚽ Hệ Thống Quản Lý Giải Bóng Đá Tỉnh Khánh Hoà
 
-> Hệ thống trực tuyến chính thức phục vụ Giải bóng đá truyền thống TN–HS–SV năm 2026. Hệ thống hỗ trợ người xem theo dõi lịch thi đấu, kết quả, bảng xếp hạng realtime.
+> Hệ thống trực tuyến chính thức phục vụ Giải Bóng Đá Tỉnh Khánh Hoà. Hệ thống hỗ trợ người xem theo dõi lịch thi đấu, kết quả, bảng xếp hạng realtime.
 
 ---
 

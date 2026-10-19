@@ -70,7 +70,7 @@ export default function NewsDetail({ newsId }) {
           <div className="border-b border-slate-200 pb-4 mb-6 text-xs text-slate-400 font-bold flex items-center gap-2">
             <span>📅 Đăng ngày: {article.createdAt}</span>
             <span>•</span>
-            <span className="text-slate-600 uppercase tracking-wide">TN–HS–SV 2026</span>
+            <span className="text-slate-600 uppercase tracking-wide">Giải Bóng Đá Tỉnh Khánh Hoà</span>
           </div>
 
           {/* 🌟 KHU VỰC THÔNG MINH: TỰ ĐỘNG PHÂN CHIA VIDEO HOẶC ẢNH BANNER */}
@@ -113,7 +113,7 @@ export default function NewsDetail({ newsId }) {
 
           {/* Chân ký tên bài viết của ban biên tập */}
           <div className="border-t border-slate-200 mt-12 pt-6 text-right italic font-black text-slate-500 text-sm">
-            Ban tổ chức Giải bóng đá truyền thống TN–HS–SV 2026
+            Ban tổ chức Giải Bóng Đá Tỉnh Khánh Hoà
           </div>
         </article>
 

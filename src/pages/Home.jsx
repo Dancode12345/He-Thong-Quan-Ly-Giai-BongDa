@@ -51,20 +51,28 @@ export default function Home() {
               <Trophy size={16} /> {data.tournament.season}
             </span>
 
-            {/* 📱 FIX RESPONSIVE: Hạ font chữ xuống text-2xl ở mobile để không bị gãy chữ GIẢI BÓNG ĐÁ */}
-            <h1 className="mt-4 max-w-3xl text-2xl font-black leading-tight sm:text-3xl md:text-5xl uppercase tracking-tight break-words">
-              GIẢI B
-              <span className="inline-flex items-center relative">
-                <span className="relative inline-block mx-0.5 h-[0.9em] w-[0.9em] align-middle">
-                  <span className="absolute -top-[0.45em] left-[55%] -translate-x-1/2 text-[0.55em] font-black text-white select-none drop-shadow-md">
+            {/* 📱 Giữ cụm BÓNG liền nhau để quả bóng thay đúng chữ O */}
+            <h1
+              className="mt-4 max-w-3xl text-2xl font-black leading-[1.16] sm:text-3xl md:text-5xl uppercase tracking-[0.01em] break-words"
+              aria-label="Hệ Thống Quản Lý Giải Bóng Đá Tỉnh Khánh Hoà"
+            >
+              HỆ THỐNG QUẢN LÝ GIẢI{" "}
+              <span className="inline-block whitespace-nowrap">
+                B
+                <span
+                  className="relative mx-[0.06em] inline-flex h-[0.86em] w-[0.86em] translate-y-[0.04em] align-baseline"
+                  aria-hidden="true"
+                >
+                  <span className="absolute -top-[0.27em] left-1/2 z-10 -translate-x-1/2 text-[0.34em] font-black leading-none">
                     ́
                   </span>
-                  <span className="flex h-full w-full items-center justify-center">
+                  <span className="flex h-full w-full items-center justify-center text-[0.82em] leading-none">
                     ⚽️
                   </span>
                 </span>
+                NG
               </span>
-              NG ĐÁ TRUYỀN THỐNG CHI HỘI TN - HS -SV HẬU SANH 2026
+              {" "}ĐÁ TỈNH KHÁNH HOÀ
             </h1>
 
             {/* 📱 FIX RESPONSIVE: Hạ bớt text size trên mobile */}
