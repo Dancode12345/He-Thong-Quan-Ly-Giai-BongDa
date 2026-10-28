@@ -23,7 +23,8 @@ db.serialize(() => {
     db.run(`CREATE TABLE IF NOT EXISTS teams (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         name TEXT NOT NULL,
-        group_name TEXT
+        group_name TEXT,
+        logo TEXT
     )`);
 
     db.run(`CREATE TABLE IF NOT EXISTS players (
