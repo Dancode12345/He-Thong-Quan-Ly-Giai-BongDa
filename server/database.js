@@ -10,6 +10,19 @@ const db = new sqlite3.Database(dbPath, (err) => {
     }
 });
 
+const teamsData = [
+    { name: 'FC Phố Biển Nha Trang', group_name: 'A', logo: 'pbnt.png' },
+    { name: 'FC Công An Tỉnh', group_name: 'A', logo: 'cat.png' },
+    { name: 'FC Cam Ranh United', group_name: 'A', logo: 'cru.png' },
+    { name: 'FC Ninh Hòa FC', group_name: 'A', logo: 'nhf.png' },
+    { name: 'FC Diên Khánh', group_name: 'A', logo: 'dk.png' },
+    { name: 'FC Vạn Ninh', group_name: 'B', logo: 'vn.png' },
+    { name: 'FC Trường Sa', group_name: 'B', logo: 'ts.png' },
+    { name: 'FC Sinh Viên Khánh Hòa', group_name: 'B', logo: 'svkh.png' },
+    { name: 'FC Khách sạn Yasaka', group_name: 'B', logo: 'ksy.png' },
+    { name: 'FC Xây Dựng Số 1', group_name: 'B', logo: 'xds1.png' }
+];
+
 db.serialize(() => {
     db.run(`CREATE TABLE IF NOT EXISTS users (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -20,11 +33,25 @@ db.serialize(() => {
         email TEXT
     )`);
 
-    db.run(`CREATE TABLE IF NOT EXISTS teams (
+    // Xóa và tạo lại bảng teams để chắc chắn cập nhật cột logo
+    db.run(`DROP TABLE IF EXISTS teams`);
+
+    db.run(`CREATE TABLE teams (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         name TEXT NOT NULL,
-        group_name TEXT
-    )`);
+        group_name TEXT,
+        logo TEXT,
+        color TEXT
+    )`, () => {
+        // Tự động insert luôn 10 đội bóng vào sau khi tạo bảng xong
+        const stmt = db.prepare(`INSERT INTO teams (name, group_name, logo) VALUES (?, ?, ?)`);
+        teamsData.forEach(team => {
+            stmt.run(team.name, team.group_name, team.logo);
+        });
+        stmt.finalize(() => {
+            console.log('🚀 Đã tự động nạp thành công 10 đội bóng kèm Logo vào CSDL!');
+        });
+    });
 
     db.run(`CREATE TABLE IF NOT EXISTS players (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -67,7 +94,7 @@ db.serialize(() => {
         created_at TEXT DEFAULT CURRENT_TIMESTAMP
     )`);
 
-    console.log('Đã khởi tạo cấu trúc 6 bảng CSDL thành công!');
+    console.log('Đã khởi tạo cấu trúc toàn bộ bảng CSDL thành công!');
 });
 
 module.exports = db;

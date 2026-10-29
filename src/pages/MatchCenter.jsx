@@ -6,43 +6,44 @@ import { useTournament } from "../context/TournamentContext";
 export default function MatchCenter() {
   const [tab, setTab] = useState("matches");
   const { data, standings } = useTournament();
-  const rounds = [...new Set(data.matches.map((match) => match.round))];
+  
+  // Đảm bảo data.matches luôn an toàn không bị undefined
+  const safeMatches = data?.matches || [];
+  const rounds = [...new Set(safeMatches.map((match) => match.round))];
 
-  // 🌟 1. LOGIC TỰ ĐỘNG PHÂN CHIA BẢNG DỰA TRÊN DATA GIẢI ĐẤU (ĐÃ FIX THIẾU ĐỘI)
-  const groupAStandings = standings.filter((row) => {
-    const teamInfo = data.teams.find(
-      (t) => t.id?.toLowerCase() === row.id?.toLowerCase() || t.name?.toLowerCase() === row.name?.toLowerCase()
+  // 🌟 1. LOGIC TỰ ĐỘNG PHÂN CHIA BẢNG AN TOÀN (Ép kiểu String tránh lỗi toLowerCase)
+  const groupAStandings = (standings || []).filter((row) => {
+    const teamInfo = (data?.teams || []).find(
+      (t) => String(t.id)?.toLowerCase() === String(row.id)?.toLowerCase() || t.name?.toLowerCase() === row.name?.toLowerCase()
     );
-    const group = teamInfo?.group || row.group;
+    const group = teamInfo?.group || teamInfo?.group_name || row.group;
     return String(group || "").toUpperCase() === "A";
   });
 
-  const groupBStandings = standings.filter((row) => {
-    const teamInfo = data.teams.find(
-      (t) => t.id?.toLowerCase() === row.id?.toLowerCase() || t.name?.toLowerCase() === row.name?.toLowerCase()
+  const groupBStandings = (standings || []).filter((row) => {
+    const teamInfo = (data?.teams || []).find(
+      (t) => String(t.id)?.toLowerCase() === String(row.id)?.toLowerCase() || t.name?.toLowerCase() === row.name?.toLowerCase()
     );
-    const group = teamInfo?.group || row.group;
+    const group = teamInfo?.group || teamInfo?.group_name || row.group;
     return String(group || "").toUpperCase() === "B";
   });
-
+  
   // 🌟 2. HÀM TỰ ĐỘNG QUÉT TOÀN BỘ TRẬN ĐẤU ĐỂ TÍNH VUA PHÁ LƯỚI
   const getDynamicScorers = () => {
     const scorerMap = {};
 
-    data.matches.forEach((match) => {
+    safeMatches.forEach((match) => {
       if (match.scorers && Array.isArray(match.scorers)) {
         match.scorers.forEach((scorer) => {
-          // Bỏ qua nếu không có tên hoặc tên mẫu DEMO để danh sách trống chuẩn xác
           if (!scorer.name || scorer.name.trim() === "" || scorer.name.includes("Cầu thủ")) return;
 
           const key = `${scorer.name.trim()}_${scorer.teamId}`;
-
           const goalCount = Number(scorer.goals ?? 1);
 
           if (scorerMap[key]) {
             scorerMap[key].goals += goalCount;
           } else {
-            const teamObj = data.teams.find((t) => t.id === scorer.teamId);
+            const teamObj = (data?.teams || []).find((t) => t.id === scorer.teamId);
             
             scorerMap[key] = {
               id: key,
@@ -97,18 +98,24 @@ export default function MatchCenter() {
       {/* TAB LỊCH THI ĐẤU */}
       {tab === "matches" && (
         <div className="mt-8 grid gap-8">
-          {rounds.map((round) => (
-            <section key={round}>
-              <h2 className="mb-4 text-2xl font-black text-navypro">{round}</h2>
-              <div className="grid gap-4 md:grid-cols-2">
-                {data.matches
-                  .filter((match) => match.round === round)
-                  .map((match) => (
-                    <MatchCard key={match.id} match={match} teams={data.teams} />
-                  ))}
-              </div>
-            </section>
-          ))}
+          {rounds.length > 0 ? (
+            rounds.map((round) => (
+              <section key={round}>
+                <h2 className="mb-4 text-2xl font-black text-navypro">{round}</h2>
+                <div className="grid gap-4 md:grid-cols-2">
+                  {safeMatches
+                    .filter((match) => match.round === round)
+                    .map((match) => (
+                      <MatchCard key={match.id} match={match} teams={data?.teams || []} />
+                    ))}
+                </div>
+              </section>
+            ))
+          ) : (
+            <div className="rounded-2xl border border-dashed border-slate-200 p-8 text-center text-slate-400">
+              Chưa có lịch thi đấu nào.
+            </div>
+          )}
         </div>
       )}
 

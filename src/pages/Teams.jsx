@@ -29,22 +29,30 @@ export default function Teams() {
         }
 
         // Chuyển dữ liệu SQLite sang định dạng TeamCard
-        const formattedTeams = result.teams.map((team) => ({
-          ...team,
-          group: team.group_name,
-          shortName:
-            team.shortName ||
-            team.name
-              .replace(/^FC\s+/i, "")
-              .split(/\s+/)
-              .map((word) => word.charAt(0))
-              .join("")
-              .slice(0, 5)
-              .toUpperCase(),
-          logo: team.logo || "/logodoi/default.jpg",
-          color: team.color || "#17A964",
-          players: Array.isArray(team.players) ? team.players : [],
-        }));
+        const formattedTeams = result.teams.map((team) => {
+          // Tạo slug chuẩn từ shortName hoặc name để làm id định tuyến chính xác
+          const generatedId = team.shortName 
+            ? team.shortName.toLowerCase() 
+            : team.name.replace(/^FC\s+/i, "").toLowerCase().replace(/\s+/g, "-");
+
+          return {
+            ...team,
+            id: generatedId, // Đảm bảo id là chuỗi slug chuẩn (vd: "cru", "cat", "pbnt"...)
+            group: team.group_name,
+            shortName:
+              team.shortName ||
+              team.name
+                .replace(/^FC\s+/i, "")
+                .split(/\s+/)
+                .map((word) => word.charAt(0))
+                .join("")
+                .slice(0, 5)
+                .toUpperCase(),
+            logo: team.logo ? `/LOGO_NEW/${team.logo.trim()}` : "/LOGO_NEW/default.png",
+            color: team.color || "#17A964",
+            players: Array.isArray(team.players) ? team.players : [],
+          };
+        });
 
         setTeams(formattedTeams);
         setError("");

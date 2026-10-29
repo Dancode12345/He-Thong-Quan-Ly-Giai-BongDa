@@ -2,15 +2,64 @@ import { createContext, useContext, useEffect, useMemo, useState } from "react";
 import { initialTournamentData } from "../data/mockData";
 import { calculateStandings, getNextMatch } from "../utils/standings";
 
-const STORAGE_KEY = "khanh-hoa-football-portal";
+const STORAGE_KEY = "tnhssv-football-portal";
 const TournamentContext = createContext(null);
 
 const readStoredData = () => {
-  // Bắt buộc luôn luôn trả về dữ liệu mới từ file mockData
+  // Lấy từ localStorage nếu có, nếu không dùng initialTournamentData
+  const saved = localStorage.getItem(STORAGE_KEY);
+  if (saved) {
+    try {
+      return JSON.parse(saved);
+    } catch (e) {
+      console.error("Lỗi đọc localStorage:", e);
+    }
+  }
   return initialTournamentData; 
 };
+
 export function TournamentProvider({ children }) {
   const [data, setData] = useState(readStoredData);
+
+  // 🌟 ĐỒNG BỘ DỮ LIỆU TỪ BACKEND SQLITE API KHI KHỞI CHẠY
+  useEffect(() => {
+    async function fetchBackendTeams() {
+      try {
+        const response = await fetch("http://localhost:5000/api/teams");
+        if (!response.ok) throw new Error("Không thể kết nối API backend");
+        
+        const result = await response.json();
+        if (result.teams && Array.isArray(result.teams)) {
+          // Chuẩn hóa dữ liệu teams từ SQLite khớp với cấu trúc frontend
+          const formattedTeams = result.teams.map((team) => {
+            const generatedId = team.shortName 
+              ? team.shortName.toLowerCase() 
+              : team.name.replace(/^FC\s+/i, "").toLowerCase().replace(/\s+/g, "-");
+
+            return {
+              ...team,
+              id: generatedId,
+              group: team.group_name || team.group || "A",
+              shortName: team.shortName || team.name.replace(/^FC\s+/i, "").slice(0, 5).toUpperCase(),
+              logo: team.logo ? `/LOGO_NEW/${team.logo.trim()}` : "/LOGO_NEW/default.png",
+              color: team.color || "#17A964",
+              players: Array.isArray(team.players) ? team.players : []
+            };
+          });
+
+          // Cập nhật đè danh sách teams từ SQLite vào state nhưng giữ nguyên matches, news...
+          setData((current) => ({
+            ...current,
+            teams: formattedTeams
+          }));
+        }
+      } catch (err) {
+        console.warn("Không kết nối được Backend SQLite, đang dùng dữ liệu mock/local:", err.message);
+      }
+    }
+
+    fetchBackendTeams();
+  }, []);
 
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(data));

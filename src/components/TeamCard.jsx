@@ -1,23 +1,26 @@
 // File hoàn chỉnh: src/components/TeamCard.jsx
 export default function TeamCard({ team }) {
+  
+  const safeId = team.id || team.shortName?.toLowerCase().replace(/\s+/g, "-");
+
   return (
     <a 
-      href={`#/teams/${team.id}`} 
+      href={`#/teams/${safeId}`} 
       className="group overflow-hidden rounded border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-glow"
     >
       {/* KHUNG ẢNH BANNER CHỨA LOGO THU NHỎ */}
       <div className="relative h-44 bg-slate-900 flex items-center justify-center p-2">
         
         {/* Logo được thu nhỏ lại, dùng object-contain để vừa vặn với khung hình */}
-        <img 
-          src={team.logo} 
-          alt={team.name} 
-          className="h-full w-auto max-w-full object-contain transition-transform duration-300 group-hover:scale-105" 
-          onError={(e) => {
+          <img 
+            src={team.logo} 
+            alt={team.name} 
+            className="h-28 w-28 object-contain transition-transform duration-300 group-hover:scale-105 z-10" 
+            onError={(e) => {
             e.target.onerror = null;
             e.target.src = "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=150";
-          }}
-        />
+            }}
+          />
         
         {/* Lớp phủ shadow tối mờ nhẹ ở đáy để làm nổi bật chữ trắng */}
         <div className="absolute inset-0 bg-gradient-to-t from-slate-950/75 via-transparent to-transparent pointer-events-none" />
