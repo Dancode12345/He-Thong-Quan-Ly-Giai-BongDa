@@ -4,3 +4,7 @@ dist
 dist-ssr
 *.local
 public/players/HLK23K24.mp4
+.env
+.env.*
+!.env.example
+**/sessions.sqlite*
