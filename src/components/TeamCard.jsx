@@ -15,7 +15,7 @@ export default function TeamCard({ team }) {
           <img 
             src={team.logo} 
             alt={team.name} 
-            className="h-28 w-28 object-contain transition-transform duration-300 group-hover:scale-105 z-10" 
+            className="h-full w-full object-contain transition-transform duration-300 group-hover:scale-105 z-10" 
             onError={(e) => {
             e.target.onerror = null;
             e.target.src = "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=150";
