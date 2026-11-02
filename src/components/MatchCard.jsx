@@ -1,9 +1,26 @@
 import { useMemo } from "react";
 
 export default function MatchCard({ match, teams }) {
-  const homeTeam = useMemo(() => teams.find((t) => t.id === match.homeTeamId), [teams, match.homeTeamId]);
-  const awayTeam = useMemo(() => teams.find((t) => t.id === match.awayTeamId), [teams, match.awayTeamId]);
+  const homeTeam = useMemo(() => teams?.find((t) => 
+    String(t.id)?.toLowerCase() === String(match.homeTeamId)?.toLowerCase() || 
+    t.name?.toLowerCase() === String(match.homeTeamId)?.toLowerCase() ||
+    t.shortName?.toLowerCase() === String(match.homeTeamId)?.toLowerCase()
+  ) || { 
+    name: match.homeTeamId || "Đội nhà", 
+    shortName: match.homeTeamId, 
+    logo: `/LOGO_NEW/${String(match.homeTeamId || "").toLowerCase()}.png` 
+  }, [teams, match.homeTeamId]);
 
+  const awayTeam = useMemo(() => teams?.find((t) => 
+    String(t.id)?.toLowerCase() === String(match.awayTeamId)?.toLowerCase() || 
+    t.name?.toLowerCase() === String(match.awayTeamId)?.toLowerCase() ||
+    t.shortName?.toLowerCase() === String(match.awayTeamId)?.toLowerCase()
+  ) || { 
+    name: match.awayTeamId || "Đội khách", 
+    shortName: match.awayTeamId, 
+    logo: `/LOGO_NEW/${String(match.awayTeamId || "").toLowerCase()}.png` 
+  }, [teams, match.awayTeamId]);
+  
   const formatKickoff = (isoString) => {
     if (!isoString) return { time: "--:--", date: "--/--" };
     const date = new Date(isoString);
@@ -66,22 +83,22 @@ export default function MatchCard({ match, teams }) {
       {/* BODY: SỬ DỤNG FLEXBOX TỐI ƯU KHÔNG GIAN CHO MOBILE */}
       <div className="flex items-center justify-between w-full gap-1.5 md:gap-4">
         
-        {/* KHỐI ĐỘI NHÀ (Co dãn thông minh, text dịch sang phải) */}
+        {/* KHỐI ĐỘI NHÀ */}
         <div className="flex items-center justify-end flex-1 gap-2 md:gap-5 min-w-0">
           <span className="text-sm sm:text-base md:text-xl font-black text-slate-800 tracking-wide uppercase group-hover:text-navypro transition-colors truncate text-right">
             {homeTeam ? homeTeam.shortName || homeTeam.name : "Đội nhà"}
           </span>
           <div className="h-11 w-11 sm:h-14 sm:w-14 md:h-16 md:w-16 flex-shrink-0 rounded-xl md:rounded-2xl bg-slate-50 p-1.5 md:p-2.5 border border-slate-200/80 shadow-md group-hover:scale-105 transition-transform duration-300 flex items-center justify-center">
             <img
-              src={homeTeam?.logo || "/logodoi/default.jpg"}
+              src={homeTeam?.logo || "/LOGO_NEW/default.png"}
               alt="Home Logo"
               className="h-full w-full object-contain"
-              onError={(e) => { e.target.src = "/logodoi/default.jpg"; }}
+              onError={(e) => { e.target.src = "/LOGO_NEW/default.png"; }}
             />
           </div>
         </div>
 
-        {/* KHỐI TRUNG TÂM: TỶ SỐ / GIỜ (Cố định khoảng cách an toàn vừa vặn) */}
+        {/* KHỐI TRUNG TÂM: TỶ SỐ / GIỜ */}
         <div className="flex-shrink-0 flex justify-center items-center mx-1 sm:mx-3 md:mx-6">
           {match.status === "scheduled" ? (
             <div className={`rounded-xl px-2.5 py-2 md:px-4 md:py-2.5 text-center min-w-[55px] md:min-w-[70px] shadow-sm border ${cardStyles.scoreBg}`}>
@@ -96,14 +113,14 @@ export default function MatchCard({ match, teams }) {
           )}
         </div>
 
-        {/* KHỐI ĐỘI KHÁCH (Co dãn thông minh, text dịch sang trái) */}
+        {/* KHỐI ĐỘI KHÁCH */}
         <div className="flex items-center justify-start flex-1 gap-2 md:gap-5 min-w-0">
           <div className="h-11 w-11 sm:h-14 sm:w-14 md:h-16 md:w-16 flex-shrink-0 rounded-xl md:rounded-2xl bg-slate-50 p-1.5 md:p-2.5 border border-slate-200/80 shadow-md group-hover:scale-105 transition-transform duration-300 flex items-center justify-center">
-            <img
-              src={awayTeam?.logo || "/logodoi/default.jpg"}
-              alt="Away Logo"
+            <img 
+              src={awayTeam?.logo || "/LOGO_NEW/default.png"} 
+              alt={awayTeam?.name || "Away Team"} 
               className="h-full w-full object-contain"
-              onError={(e) => { e.target.src = "/logodoi/default.jpg"; }}
+              onError={(e) => { e.target.src = "/LOGO_NEW/default.png"; }} 
             />
           </div>
           <span className="text-sm sm:text-base md:text-xl font-black text-slate-800 tracking-wide uppercase group-hover:text-navypro transition-colors truncate text-left">
